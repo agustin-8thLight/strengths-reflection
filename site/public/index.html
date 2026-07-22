@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Strengths Reflection — a studio resource</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #141414;
+    --dark-gray: #3c3c3c;
+    --mid-gray: #808080;
+    --light-gray: #dedede;
+    --lighter-gray: #ebebeb;
+    --lightest-gray: #f4f4f4;
+    --white: #ffffff;
+    --accent: #0071ce;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'GT Flexa', 'Barlow', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--dark-gray);
+    font-size: 20px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow {
+    font-family: 'GT Flexa Mono', 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  header.hero {
+    padding: 140px 0 100px;
+  }
+
+  header.hero .eyebrow { margin-bottom: 32px; display: block; }
+
+  h1 {
+    font-size: clamp(56px, 10vw, 104px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+    color: var(--black);
+    margin-bottom: 40px;
+  }
+
+  .dek {
+    font-size: clamp(24px, 3.2vw, 30px);
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--black);
+    max-width: 24em;
+    margin-bottom: 48px;
+  }
+
+  .dek strong { font-weight: 600; }
+
+  .cta-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+
+  .btn {
+    display: inline-block;
+    font-size: 19px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 18px 36px;
+    border-radius: 999px;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn-primary { background: var(--black); color: var(--white); }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  .cta-note { font-size: 16px; color: var(--mid-gray); }
+
+  section {
+    border-top: 1px solid var(--light-gray);
+    padding: 88px 0;
+  }
+
+  section .eyebrow { display: block; margin-bottom: 48px; }
+
+  .step {
+    max-width: 34em;
+    margin-bottom: 64px;
+  }
+  .step:last-child { margin-bottom: 0; }
+
+  .step-num {
+    display: block;
+    font-family: 'GT Flexa Mono', 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .step h2 {
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    color: var(--black);
+    margin-bottom: 16px;
+  }
+
+  .step p { max-width: 30em; }
+
+  ul.receipts {
+    list-style: none;
+    max-width: 34em;
+  }
+  ul.receipts li {
+    font-size: clamp(22px, 2.8vw, 27px);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--black);
+    padding: 28px 0;
+    border-bottom: 1px solid var(--lighter-gray);
+  }
+  ul.receipts li:first-child { padding-top: 0; }
+  ul.receipts li:last-child { border-bottom: none; }
+  ul.receipts li span { display: block; font-size: 17px; font-weight: 400; color: var(--dark-gray); margin-top: 8px; }
+
+  .privacy {
+    background: var(--lightest-gray);
+    border-radius: 16px;
+    padding: 44px 48px;
+    max-width: 40em;
+  }
+  .privacy p {
+    font-size: 21px;
+    line-height: 1.55;
+    color: var(--black);
+    max-width: 32em;
+  }
+  .privacy p strong { font-weight: 600; }
+
+  footer {
+    border-top: 1px solid var(--light-gray);
+    padding: 56px 0 120px;
+    font-size: 16px;
+    color: var(--mid-gray);
+  }
+  footer p { max-width: 40em; margin-bottom: 10px; }
+  footer a { color: var(--dark-gray); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    header.hero > * { animation: rise .7s ease both; }
+    header.hero .dek { animation-delay: .08s; }
+    header.hero .cta-row { animation-delay: .16s; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+
+  @media (max-width: 640px) {
+    body { font-size: 18px; }
+    header.hero { padding: 88px 0 72px; }
+    section { padding: 64px 0; }
+    .step { margin-bottom: 48px; }
+    .privacy { padding: 32px 28px; }
+    .privacy p { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">8th Light · Design Studio · Resource</span>
+    <h1>Strengths<br>Reflection</h1>
+    <p class="dek">A private, evidence-backed read of your strengths, built for review-cycle prep. <strong>Ten questions, your own record, one snapshot only you see.</strong></p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://github.com/agustin-8thLight/strengths-reflection">Get the skill on GitHub</a>
+      <span class="cta-note">Setup takes 5 minutes. The reflection takes about 25.</span>
+    </div>
+  </header>
+
+  <section>
+    <span class="eyebrow">How it works</span>
+
+    <div class="step">
+      <span class="step-num">01</span>
+      <h2>Set it up in Claude</h2>
+      <p>One file, three ways in: paste it into a Claude project's instructions, install it as a skill, or drop it into Claude Code. The repo README walks you through whichever path matches how you already use Claude.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-num">02</span>
+      <h2>Answer ten questions, bring your record</h2>
+      <p>Questions about what energizes you, how you work with others, and what you want to grow next, one at a time, at your pace. Share whatever you have access to: self reviews, review packets, peer feedback, kudos threads. All optional, all private.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-num">03</span>
+      <h2>Keep the snapshot</h2>
+      <p>You get a markdown document that's yours to save, revise, and reuse: your strengths with the evidence behind them, and three talking points you could say out loud in your next review conversation.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">What it surfaces</span>
+    <ul class="receipts">
+      <li>The work that energizes you, and the work that drains you.<span>Stated plainly, so it can guide which projects you raise your hand for.</span></li>
+      <li>How you do your best work with others.<span>Your collaboration shape, and what teammates actually seek you out for.</span></li>
+      <li>Where your record sees more in you than you claim.<span>When you share review material, the gap almost always runs in your favor. Most of us undersell ourselves; the evidence usually disagrees.</span></li>
+      <li>What you want to grow next, in your own words.<span>The tool never introduces a weakness you didn't name yourself.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="eyebrow">Private by design</span>
+    <div class="privacy">
+      <p><strong>Nothing you write is stored anywhere or sent to anyone.</strong> The conversation happens in your own Claude account, the snapshot is a file you save yourself, and sharing any of it is entirely your call. It's not a performance evaluation, and it isn't visible to managers, ever.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>A resource from the design studio, built on our career research about making growth visible. It organizes evidence with the CliftonStrengths four-domain lens in plain language; it is not the official CliftonStrengths assessment.</p>
+    <p>Questions or ideas: find Agustin. Source and docs on <a href="https://github.com/agustin-8thLight/strengths-reflection">GitHub</a>.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
