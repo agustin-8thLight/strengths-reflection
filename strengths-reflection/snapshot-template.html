@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  STRENGTHS SNAPSHOT TEMPLATE
+  How to fill this file (instructions for Claude):
+  1. Replace every [BRACKETED] placeholder with real content from the synthesis.
+  2. Set the radar data in the SNAPSHOT_DATA script near the bottom.
+     Scores are 0 to 5 and measure EVIDENCE DENSITY in this person's materials,
+     never ability. If no record material was shared, set "record" to null;
+     the chart renders a single self series and the gap column hides itself.
+  3. Sections marked "delete if unused" must be removed entirely when they
+     don't apply. Never leave placeholders in a delivered page.
+  4. Repeat block comments show where to duplicate an element for each item.
+  5. Do not add scores, grades, or rankings anywhere outside the radar.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>[NAME] — Strengths Snapshot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #141414;
+    --dark-gray: #3c3c3c;
+    --mid-gray: #808080;
+    --light-gray: #dedede;
+    --lighter-gray: #ebebeb;
+    --lightest-gray: #f4f4f4;
+    --white: #ffffff;
+    --accent: #0071ce;
+    --record: #0071ce;
+    --self: #ff8300;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'GT Flexa', 'Barlow', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--dark-gray);
+    font-size: 19px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 800px; margin: 0 auto; padding: 0 28px; }
+
+  .eyebrow {
+    font-family: 'GT Flexa Mono', 'IBM Plex Mono', monospace;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--mid-gray);
+  }
+
+  header.masthead { padding: 96px 0 72px; }
+  header.masthead .eyebrow { display: block; margin-bottom: 24px; }
+
+  h1 {
+    font-size: clamp(44px, 8vw, 72px);
+    font-weight: 600; letter-spacing: -0.025em; line-height: 1.02;
+    color: var(--black); margin-bottom: 28px;
+  }
+
+  .lede {
+    font-size: clamp(21px, 2.8vw, 25px); line-height: 1.5;
+    color: var(--black); max-width: 26em;
+  }
+
+  .framing {
+    font-size: 15px; color: var(--mid-gray); max-width: 44em;
+    margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--light-gray);
+  }
+
+  section { border-top: 1px solid var(--light-gray); padding: 64px 0; }
+  section .eyebrow { display: block; margin-bottom: 40px; }
+  section p { max-width: 34em; margin-bottom: 16px; }
+  section p:last-child { margin-bottom: 0; }
+
+  ul.plain { list-style: none; max-width: 34em; }
+  ul.plain li {
+    padding: 16px 0; border-bottom: 1px solid var(--lighter-gray);
+    color: var(--black); font-weight: 500;
+  }
+  ul.plain li:first-child { padding-top: 0; }
+  ul.plain li:last-child { border-bottom: none; }
+  ul.plain li span { display: block; font-size: 16px; font-weight: 400; color: var(--dark-gray); margin-top: 4px; }
+
+  .list-label {
+    font-family: 'GT Flexa Mono', 'IBM Plex Mono', monospace;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; margin: 40px 0 16px;
+  }
+  .list-label.pos { color: var(--accent); }
+  .list-label.neg { color: var(--mid-gray); }
+  .list-label:first-of-type { margin-top: 0; }
+
+  /* chart */
+  figure.radar { text-align: center; margin: 8px 0 12px; }
+  figure.radar svg { max-width: 100%; height: auto; }
+  .legend {
+    display: flex; justify-content: center; gap: 28px; flex-wrap: wrap;
+    font-size: 14px; color: var(--dark-gray); margin-top: 6px;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .viz-note {
+    font-size: 15px; color: var(--mid-gray); max-width: 36em; margin: 20px 0 0;
+  }
+  .viz-note strong { color: var(--dark-gray); }
+
+  table.data { width: 100%; border-collapse: collapse; font-size: 16px; margin-top: 28px; }
+  table.data th {
+    text-align: left; font-family: 'GT Flexa Mono', 'IBM Plex Mono', monospace;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mid-gray); padding: 10px 12px; border-bottom: 1px solid var(--light-gray);
+  }
+  table.data td { padding: 12px; border-bottom: 1px solid var(--lighter-gray); font-variant-numeric: tabular-nums; }
+  table.data td:first-child { color: var(--black); font-weight: 500; }
+  table.data .num, table.data th.num { text-align: center; }
+
+  /* strengths: number sits ABOVE the title, never to its left */
+  .item { max-width: 36em; margin-bottom: 52px; }
+  .item:last-child { margin-bottom: 0; }
+  .item-num {
+    display: block;
+    font-family: 'GT Flexa Mono', 'IBM Plex Mono', monospace;
+    font-size: 14px; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  .item h2 {
+    display: inline; font-size: clamp(24px, 3.4vw, 30px); font-weight: 600;
+    letter-spacing: -0.015em; line-height: 1.25; color: var(--black); margin-right: 12px;
+  }
+  .domain-tag {
+    display: inline-block; vertical-align: 3px;
+    font-family: 'GT Flexa Mono', 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mid-gray); background: var(--lightest-gray);
+    border-radius: 999px; padding: 4px 12px; white-space: nowrap;
+  }
+  .item > p { margin-top: 14px; }
+
+  blockquote {
+    border-left: 2px solid var(--accent); padding-left: 18px; margin: 18px 0 0;
+    color: var(--black); font-size: 17px; max-width: 32em;
+  }
+  blockquote cite { display: block; font-style: normal; font-size: 14px; color: var(--mid-gray); margin-top: 6px; }
+
+  .say-it { background: var(--lightest-gray); border-radius: 12px; padding: 22px 26px; max-width: 36em; margin-bottom: 16px; }
+  .say-it:last-child { margin-bottom: 0; }
+  .say-it p { font-size: 18px; color: var(--black); margin: 0; max-width: none; }
+
+  footer { border-top: 1px solid var(--light-gray); padding: 44px 0 100px; font-size: 15px; color: var(--mid-gray); }
+  footer p { max-width: 44em; margin-bottom: 8px; }
+
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    header.masthead { padding: 64px 0 52px; }
+    section { padding: 48px 0; }
+    .item { margin-bottom: 40px; }
+  }
+
+  @media print {
+    body { font-size: 12px; }
+    header.masthead, section, footer { padding: 24px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="eyebrow">Strengths Snapshot · [MONTH YEAR]</span>
+    <h1>[NAME]</h1>
+    <p class="lede">[AT YOUR BEST: one short paragraph, second person, concrete. What kind of work, in what conditions, with what result.]</p>
+    <p class="framing">Built from [LIST THE SOURCES: e.g. "your reflection answers and your 2026 review packet"]. Every claim below traces to something in those sources. This is an evidence-backed read of you at your best, not an evaluation, and it is yours to revise.</p>
+  </header>
+
+  <section>
+    <span class="eyebrow">Energy</span>
+    <p class="list-label pos">What energizes you</p>
+    <ul class="plain">
+      <!-- repeat li for each; 2 to 4 items -->
+      <li>[ENERGIZER]<span>[one line of evidence]</span></li>
+    </ul>
+    <p class="list-label neg">What drains you</p>
+    <ul class="plain">
+      <li>[DRAIN]<span>[one line of evidence; keep factual, never clinical]</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="eyebrow">How you work with others</span>
+    <p>[COLLABORATION SHAPE: their thinking mode (alone, pair, group), what teammates seek them out for, what makes teams feel right to them. Two or three sentences.]</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">The four domains, in your evidence</span>
+    <p>[ONE-SENTENCE SETUP, e.g. "Two readings of the same four domains: what your record shows, and what you say about yourself." If record is null, adapt: "Where your own account puts the evidence."]</p>
+
+    <figure class="radar" role="img" aria-label="Radar chart of evidence signal across four strength domains. Values are in the table below.">
+      <svg id="radarSvg" viewBox="0 0 560 500" width="560" height="500"></svg>
+      <figcaption class="legend" id="radarLegend"></figcaption>
+    </figure>
+
+    <p class="viz-note"><strong>Read this carefully:</strong> signal strength, 0 to 5, measures how much converging evidence each domain has in your documents. It measures the evidence, not your ability, and a lower number usually means less material, not less strength.</p>
+
+    <div id="radarTable"></div>
+
+    <!-- delete if unused: only when a real self-vs-record gap exists -->
+    <blockquote>[GAP CALLOUT, e.g. "Where the two reads differ, the record sees more than you claim, never less."]</blockquote>
+  </section>
+
+  <section>
+    <span class="eyebrow">Your strengths</span>
+
+    <!-- repeat this block for each strength; 3 to 5 total -->
+    <div class="item">
+      <span class="item-num">01</span>
+      <h2>[STRENGTH, stated as a sentence about them.]</h2>
+      <span class="domain-tag">[DOMAIN]</span>
+      <p>[EVIDENCE: the specific moments, sources named in plain words. Two to four sentences.]</p>
+      <!-- optional; delete if no direct quote exists -->
+      <blockquote>[VERBATIM QUOTE from peer or review]<cite>[SOURCE, e.g. "Peer feedback, 2026 review"]</cite></blockquote>
+    </div>
+
+  </section>
+
+  <!-- delete if unused: only when record material was shared AND shows something they undersell -->
+  <section>
+    <span class="eyebrow">Where the record sees more than you do</span>
+    <p>[THE UNDERSOLD STRENGTHS: what they call minor or never mention, and what the record says instead. Supportive, specific, no scolding.]</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">What you're growing next</span>
+    <p>[THEIR GROWTH DIRECTION, in their own framing, sharpened. Connect their stated goals to their strengths. Never introduce a weakness they didn't name themselves.]</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Say it out loud</span>
+    <p>Three lines you could actually use in your next review conversation, each one already backed by your evidence.</p>
+    <!-- repeat for each talking point; exactly 3 -->
+    <div class="say-it"><p>"[TALKING POINT]"</p></div>
+  </section>
+
+  <footer>
+    <p>Generated [MONTH YEAR] with the studio's Strengths Reflection tool. It organizes evidence with the CliftonStrengths four-domain lens in plain language; it is not the official CliftonStrengths assessment, and it is not a performance evaluation. This document belongs to [FIRST NAME] and revising it is the point.</p>
+  </footer>
+
+</div>
+
+<script id="snapshot-data" type="application/json">
+{
+  "record": { "Strategic thinking": 4.5, "Executing": 4.0, "Relationship building": 4.0, "Influencing": 3.5 },
+  "self":   { "Strategic thinking": 4.5, "Executing": 3.0, "Relationship building": 4.0, "Influencing": 2.5 },
+  "recordLabel": "The record (reviews, peers)",
+  "selfLabel": "Your own read"
+}
+</script>
+<script>
+  // Renders the radar and its table from snapshot-data. Set "record" to null
+  // when no review material was shared; a single self series renders instead.
+  const DATA = JSON.parse(document.getElementById('snapshot-data').textContent);
+  const AXES = Object.keys(DATA.self);
+  const CX = 280, CY = 250, R = 175, MAX = 5;
+  const ANGLES = AXES.map((_, i) => -Math.PI / 2 + i * 2 * Math.PI / AXES.length);
+  const px = (v, a) => CX + Math.cos(a) * R * (v / MAX);
+  const py = (v, a) => CY + Math.sin(a) * R * (v / MAX);
+
+  const svg = document.getElementById('radarSvg');
+  let g = '';
+  for (let ring = 1; ring <= MAX; ring++) {
+    const pts = ANGLES.map(a => px(ring, a) + ',' + py(ring, a)).join(' ');
+    g += `<polygon points="${pts}" fill="none" stroke="${ring === MAX ? '#dedede' : '#efefef'}" stroke-width="1"/>`;
+  }
+  ANGLES.forEach(a => { g += `<line x1="${CX}" y1="${CY}" x2="${px(MAX, a)}" y2="${py(MAX, a)}" stroke="#efefef" stroke-width="1"/>`; });
+
+  const series = [];
+  if (DATA.record) series.push({ key: 'record', color: '#0071ce', label: DATA.recordLabel || 'The record' });
+  series.push({ key: 'self', color: '#ff8300', label: DATA.selfLabel || 'Your own read' });
+
+  series.forEach(s => {
+    const vals = AXES.map(ax => DATA[s.key][ax]);
+    const pts = vals.map((v, i) => px(v, ANGLES[i]) + ',' + py(v, ANGLES[i])).join(' ');
+    g += `<polygon points="${pts}" fill="${s.color}" fill-opacity="0.10" stroke="${s.color}" stroke-width="2" stroke-linejoin="round"/>`;
+    vals.forEach((v, i) => {
+      g += `<circle cx="${px(v, ANGLES[i])}" cy="${py(v, ANGLES[i])}" r="5" fill="${s.color}" stroke="#ffffff" stroke-width="2"><title>${AXES[i]} · ${s.label}: ${v.toFixed(1)}</title></circle>`;
+    });
+  });
+
+  const LABEL_POS = [
+    { dx: 0, dy: -22, anchor: 'middle' },
+    { dx: 12, dy: -6, anchor: 'start' },
+    { dx: 0, dy: 30, anchor: 'middle' },
+    { dx: -12, dy: -6, anchor: 'end' }
+  ];
+  ANGLES.forEach((a, i) => {
+    const pos = LABEL_POS[i] || { dx: 0, dy: 0, anchor: 'middle' };
+    g += `<text x="${px(MAX, a) + pos.dx}" y="${py(MAX, a) + pos.dy}" text-anchor="${pos.anchor}" font-size="13" font-weight="500" fill="#3c3c3c" font-family="Barlow, sans-serif">${AXES[i]}</text>`;
+  });
+  svg.innerHTML = g;
+
+  document.getElementById('radarLegend').innerHTML = series.map(s =>
+    `<span><i style="background:${s.color}"></i>${s.label}</span>`).join('');
+
+  let rows = AXES.map(ax => {
+    const rec = DATA.record ? `<td class="num">${DATA.record[ax].toFixed(1)}</td>` : '';
+    const gap = DATA.record
+      ? `<td>${DATA.record[ax] > DATA.self[ax] ? 'Record sees more' : DATA.record[ax] < DATA.self[ax] ? 'You claim more' : 'Aligned'}</td>` : '';
+    return `<tr><td>${ax}</td>${rec}<td class="num">${DATA.self[ax].toFixed(1)}</td>${gap}</tr>`;
+  }).join('');
+  document.getElementById('radarTable').innerHTML =
+    `<table class="data"><thead><tr><th>Domain</th>${DATA.record ? '<th class="num">The record</th>' : ''}<th class="num">Your read</th>${DATA.record ? '<th>Gap</th>' : ''}</tr></thead><tbody>${rows}</tbody></table>`;
+</script>
+
+</body>
+</html>

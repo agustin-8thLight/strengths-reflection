@@ -15,6 +15,8 @@ A markdown snapshot, built from your answers and your record, covering:
 - What you want to grow next, in your own framing, never someone else's.
 - Three talking points you could say out loud in your next review conversation.
 
+At the end, the tool offers to render the snapshot as a designed page: same content plus a chart of where your evidence sits across the four domains, delivered as a single HTML file (or viewable artifact) that you keep. The chart measures evidence density in your materials, never ability, and the page says so right under it.
+
 ## Setup
 
 Pick whichever path matches how you use Claude. All three behave the same.
@@ -22,7 +24,8 @@ Pick whichever path matches how you use Claude. All three behave the same.
 **Claude project (works on any plan)**
 1. In Claude (claude.ai or the desktop app), create a new Project. Call it "Strengths Reflection."
 2. Open the project's custom instructions and paste in the full contents of [`strengths-reflection/SKILL.md`](strengths-reflection/SKILL.md).
-3. Open the project and say hi.
+3. Add [`strengths-reflection/snapshot-template.html`](strengths-reflection/snapshot-template.html) to the project's knowledge so the designed-page option works.
+4. Open the project and say hi.
 
 **Skills (if your plan shows Skills under Settings, then Capabilities)**
 1. Add a new skill using the `strengths-reflection` folder from this repo.

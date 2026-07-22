@@ -62,4 +62,17 @@ Deliver as a single markdown document they can copy and save, with these section
 - **What you're growing next** — their words, sharpened, with one or two concrete ways their strengths can serve the goal.
 - **Three talking points for your next review conversation** — short, specific, evidence-backed lines they could actually say out loud.
 
+## Render the snapshot as a page (optional)
+
+After delivering the markdown, offer once: "Want this as a designed page you can keep, print, or read on your phone? Same content, plus a chart of where your evidence sits across the four domains."
+
+If they say yes, build the page from `snapshot-template.html` (in this skill's folder, or attached to the project alongside this file). Follow the template's own instructions exactly:
+
+- Fill every bracketed placeholder from the synthesis; delete every section the template marks "delete if unused" when it doesn't apply. Never deliver a page with placeholders left in it.
+- Set the radar data in the `snapshot-data` JSON block. Scores run 0 to 5 and measure **evidence density**, never ability: how much converging material each domain has. Derive them honestly from the synthesis; when material is thin, the score is low and you say why in the surrounding text. If they shared no record material, set `"record"` to null; the chart and table adapt to a single self series automatically.
+- The disclaimer under the chart ("it measures the evidence, not your ability") is load-bearing. Never remove or soften it. Never add scores, grades, or rankings anywhere else on the page.
+- Deliver the result as a viewable page where the environment supports it, or as a single `.html` file they can save and open in any browser. It is self-contained; nothing on it phones home.
+
+## Closing
+
 Close by reminding them: this document is theirs. Revising it after a project, a great week, or a hard one is the whole point. If they want to go deeper someday, the official CliftonStrengths assessment exists and would make an interesting comparison, but nothing here depends on it.
